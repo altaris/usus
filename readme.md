@@ -1,4 +1,4 @@
 usus : User Setup, Utter Showoff
 ================================
 
-Works better with `lolcat` !!
+Pretty much a shell version of `archey`, not quite as complete yet. Works better with `lolcat` !!
