@@ -77,7 +77,7 @@ else
     winman="???"
 fi
 
-shell=$SHELL
+shell=$(echo "$SHELL" | grep -Eo "\\w+$")
 term=$TERM
 
 cpu=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | sed -r "s/.*: (.*)/\1/")
