@@ -79,7 +79,10 @@ fi
 
 shell=$SHELL
 term=$TERM
+
 cpu=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | sed -r "s/.*: (.*)/\1/")
+mem="$(free -h | grep Mem | sed -r "s/Mem:\\s+([0-9]+,?[0-9]+\\w+)\\s+([0-9]+,[0-9]+\\w+).*/\2\/\1/") $(free -h | grep Swap | sed -r "s/Swap:\\s+([0-9]+,[0-9]+\\w+)\\s+([0-9]+,?[0-9]+\\w+).*/\2\/\1/")"
+disk="$(df -h | grep sda1 | sed -r "s|/dev/sda1\\s+([0-9]+,?[0-9]+\\w+)\\s+([0-9]+,?[0-9]+\\w+).*|\2/\1|")"
 
 packc=$(dpkg --get-selections | wc -l)
 
@@ -89,19 +92,19 @@ out="
       ,/X+ +M@@M@MM% ,-%HMMM@X/,            
     -+@MM; SM@@MH+- ;XMMMM@MMMM@+-          Kernel   : $kernel
    ,@M@@M- XM@X;. -+XXXXXHHH@M@M.--.        Distro   : $distro
-  ,%MM@@MH ,@%=            ..--=-=;=,.      Uptime   : $uptime
-  +@#@@@MX .,              -%HXSS%%%+;      Procs    : $procc
- =; .@M@M$                  .;@MMMM@MM;     
- X@= -#MM/                    .+MM@@@M#;    Shell    : $shell
-,@M@H; ;@1                     . =X#@@@@    Terminal : $term
-,@@@MMX, .                    /H- ;@M@M=    WM       : $winman
-.H@@@@M@+,                    %MM+. %#$.    DeskEnv  : $deskenv
- /MMMM@MMH\.                  XM@MH; =;     Packages : $packc
-  /%+%SXHH@#=              , .H@@@@MX,      
-   .,,.,,..,,,           -%H ,@@@@@MX,      CPU      : $cpu
-    %MM@@@HHHXM++;;-- .;SMMX =M@@MM%.       
+  ,%MM@@MH ,@%=            ..--=-=;=,.      
+  +@#@@@MX .,              -%HXSS%%%+;      Shell    : $shell
+ =; .@M@M$                  .;@MMMM@MM;     Terminal : $term
+ X@= -#MM/                    .+MM@@@M#;    WM       : $winman
+,@M@H; ;@1                     . =X#@@@@    DeskEnv  : $deskenv
+,@@@MMX, .                    /H- ;@M@M=    Packages : $packc
+.H@@@@M@+,                    %MM+. %#$.    
+ /MMMM@MMH\.                  XM@MH; =;     Uptime   : $uptime
+  /%+%SXHH@#=              , .H@@@@MX,      Procs    : $procc
+   .,,.,,..,,,           -%H ,@@@@@MX,      Mem Swp  : $mem
+    %MM@@@HHHXM++;;-- .;SMMX =M@@MM%.       Disk     : $disk
      =XMCAMAMAGUEY ,-+HMM@M+ /MMMX=         
-       =%@M@M#@S .=#@MM@@@M; %M%=           
+       =%@M@M#@S .=#@MM@@@M; %M%=           CPU      : $cpu
          ,;+#+- /H#MMMMMMM@= =,             
            --. =++%%%%+/;-.                 
 "
