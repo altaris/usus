@@ -81,8 +81,8 @@ shell=$(echo "$SHELL" | grep -Eo "\\w+$")
 term=$TERM
 
 cpu=$(cat /proc/cpuinfo | grep "model name" | head -n 1 | sed -r "s/.*: (.*)/\1/")
-mem="$(free -h | grep Mem | sed -r "s/Mem:\\s+([0-9]+,?[0-9]+\\w+)\\s+([0-9]+,[0-9]+\\w+).*/\2\/\1/") $(free -h | grep Swap | sed -r "s/Swap:\\s+([0-9]+,[0-9]+\\w+)\\s+([0-9]+,?[0-9]+\\w+).*/\2\/\1/")"
-disk="$(df -h | grep sda1 | sed -r "s|/dev/sda1\\s+([0-9]+,?[0-9]+\\w+)\\s+([0-9]+,?[0-9]+\\w+).*|\2/\1|")"
+mem="$(free -h | grep Mem | sed -r "s/Mem:\\s+([0-9]+,?[0-9]*\\w+)\\s+([0-9]+,?[0-9]*\\w+).*/\2\/\1/") $(free -h | grep Swap | sed -r "s/Swap:\\s+([0-9]+,?[0-9]*\\w+)\\s+([0-9]+,?[0-9]*\\w+).*/\2\/\1/")"
+disk="$(df -h | grep sda1 | sed -r "s|/dev/sda1\\s+([0-9]+,?[0-9]*\\w+)\\s+([0-9]+,?[0-9]*\\w+).*|\2/\1|")"
 
 packc=$(dpkg --get-selections | wc -l)
 
