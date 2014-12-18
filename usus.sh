@@ -22,7 +22,7 @@ elif [[ -n $(echo "$procs" | grep xfce4-session) ]]; then
 elif [[ -n $(echo "$procs" | grep lxsession) ]]; then
     deskenv="LXDE"
 else
-    deskenv="???"
+    deskenv="None"
 fi
 
 if [[ -n $(echo "$procs" | grep awesome) ]]; then
@@ -31,6 +31,8 @@ elif [[ -n $(echo "$procs" | grep beryl) ]]; then
     winman="Beryl"
 elif [[ -n $(echo "$procs" | grep blackbox) ]]; then
     winman="Blackbox"
+elif [[ -n $(echo "$procs" | grep cinnamon) ]]; then
+    winman="Cinnamon"
 elif [[ -n $(echo "$procs" | grep compiz) ]]; then
     winman="Compiz"
 elif [[ -n $(echo "$procs" | grep dwm) ]]; then
@@ -63,6 +65,10 @@ elif [[ -n $(echo "$procs" | grep ratpoison) ]]; then
     winman="ratpoison"
 elif [[ -n $(echo "$procs" | grep scrotwm) ]]; then
     winman="ScrotWM"
+elif [[ -n $(echo "$procs" | grep stumpwm) ]]; then
+    winman="StumpWM"
+elif [[ -n $(echo "$procs" | grep subtle) ]]; then
+    winman="Subtle"
 elif [[ -n $(echo "$procs" | grep wmaker) ]]; then
     winman="Window Maker"
 elif [[ -n $(echo "$procs" | grep wmfs) ]]; then
@@ -74,7 +80,7 @@ elif [[ -n $(echo "$procs" | grep xfwm4) ]]; then
 elif [[ -n $(echo "$procs" | grep xmonad) ]]; then
     winman="xmonad"
 else
-    winman="???"
+    winman="None"
 fi
 
 shell=$(echo "$SHELL" | grep -Eo "\\w+$")
