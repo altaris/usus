@@ -93,74 +93,30 @@ disk="$(df -h | grep sda1 | sed -r "s|/dev/sda1\\s+([0-9]+,?[0-9]*\\w+)\\s+([0-9
 packc=$(dpkg --get-selections | wc -l)
 
 out="
-            .,-;;//;\=,.                
-         . 1H@@@MM@M#H/ ,+;,            
-      ,/X+ +M@@M@MM% ,-%HMMM@X/,        
-    -+@MM; SM@@MH+- ;XMMMM@MMMM@+-      
-   ,@M@@M- XM@X;. -+XXXXXHHH@M@M.--.    
-  ,%MM@@MH ,@%=            ..--=-=;=,.  
-  +@#@@@MX .,              -%HXSS%%%+;  
- =; .@M@M$                  .;@MMMM@MM; 
- X@= -#MM/                    .+MM@@@M#;
-,@M@H; ;@1                     . =X#@@@@
-,@@@MMX, .                    /H- ;@M@M=
-.H@@@@M@+,                    %MM+. %#$.
- /MMMM@MMH\.                  XM@MH; =; 
-  /%+%SXHH@#=              , .H@@@@MX,  
-   .,,.,,..,,,           -%H ,@@@@@MX,  
-    %MM@@@HHHXM++;;-- .;SMMX =M@@MM%.   
-     =XMCAMAMAGUEY ,-+HMM@M+ /MMMX=     
-       =%@M@M#@S .=#@MM@@@M; %M%=       
-         ,;+#+- /H#MMMMMMM@= =,         
-           --. =++%%%%+/;-.             
-
-###
-
-User     : $user
-Hostname : $host
-
-Kernel   : $kernel
-Distro   : $distro
-
-Shell    : $shell
-Terminal : $term
-WM       : $winman
-DeskEnv  : $deskenv
-Packages : $packc
-
-Uptime   : $uptime
-Procs    : $procc
-Mem Swp  : $mem
-Disk     : $disk
-
-CPU      : $cpu
+            .,-;;//;\=,.                    User     : $user
+         . 1H@@@MM@M#H/ ,+;,                Hostname : $host
+      ,/X+ +M@@M@MM% ,-%HMMM@X/,            
+    -+@MM; SM@@MH+- ;XMMMM@MMMM@+-          Kernel   : $kernel
+   ,@M@@M- XM@X;. -+XXXXXHHH@M@M.--.        Distro   : $distro
+  ,%MM@@MH ,@%=            ..--=-=;=,.      
+  +@#@@@MX .,              -%HXSS%%%+;      Shell    : $shell
+ =; .@M@M$                  .;@MMMM@MM;     Terminal : $term
+ X@= -#MM/                    .+MM@@@M#;    WM       : $winman
+,@M@H; ;@1                     . =X#@@@@    DeskEnv  : $deskenv
+,@@@MMX, .                    /H- ;@M@M=    Packages : $packc
+.H@@@@M@+,                    %MM+. %#$.    
+ /MMMM@MMH\.                  XM@MH; =;     Uptime   : $uptime
+  /%+%SXHH@#=              , .H@@@@MX,      Procs    : $procc
+   .,,.,,..,,,           -%H ,@@@@@MX,      Mem Swp  : $mem
+    %MM@@@HHHXM++;;-- .;SMMX =M@@MM%.       
+     =XMCAMAMAGUEY ,-+HMM@M+ /MMMX=         CPU      : $cpu
+       =%@M@M#@S .=#@MM@@@M; %M%=        
+         ,;+#+- /H#MMMMMMM@= =,          
+           --. =++%%%%+/;-.              
 "
 
 if [[ -n $(which lolcat) ]]; then
-    echo "$out" | lwcat | lolcat
+    echo "$out" | lolcat
 else
-    echo "$out" | lwcat
+    echo "$out"
 fi
-
-# out="
-#             .,-;;//;\=,.                    User     : $user
-#          . 1H@@@MM@M#H/ ,+;,                Hostname : $host
-#       ,/X+ +M@@M@MM% ,-%HMMM@X/,            
-#     -+@MM; SM@@MH+- ;XMMMM@MMMM@+-          Kernel   : $kernel
-#    ,@M@@M- XM@X;. -+XXXXXHHH@M@M.--.        Distro   : $distro
-#   ,%MM@@MH ,@%=            ..--=-=;=,.      
-#   +@#@@@MX .,              -%HXSS%%%+;      Shell    : $shell
-#  =; .@M@M$                  .;@MMMM@MM;     Terminal : $term
-#  X@= -#MM/                    .+MM@@@M#;    WM       : $winman
-# ,@M@H; ;@1                     . =X#@@@@    DeskEnv  : $deskenv
-# ,@@@MMX, .                    /H- ;@M@M=    Packages : $packc
-# .H@@@@M@+,                    %MM+. %#$.    
-#  /MMMM@MMH\.                  XM@MH; =;     Uptime   : $uptime
-#   /%+%SXHH@#=              , .H@@@@MX,      Procs    : $procc
-#    .,,.,,..,,,           -%H ,@@@@@MX,      Mem Swp  : $mem
-#     %MM@@@HHHXM++;;-- .;SMMX =M@@MM%.       Disk     : $disk
-#      =XMCAMAMAGUEY ,-+HMM@M+ /MMMX=         
-#        =%@M@M#@S .=#@MM@@@M; %M%=           CPU      : $cpu
-#          ,;+#+- /H#MMMMMMM@= =,             
-#            --. =++%%%%+/;-.                 
-# "
